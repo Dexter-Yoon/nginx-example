@@ -1,2 +1,0 @@
-# test-webapp
-# nginx-example
