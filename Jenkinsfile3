@@ -38,27 +38,6 @@ stage('2. Clone sources with SCM Step Plugin') {
 	echo 'GIT_COMMITTER_EMAIL : ${gitValues.GIT_COMMITTER_EMAIL}'
 	echo 'GIT_AUTHOR_EMAIL : ${gitValues.GIT_AUTHOR_EMAIL}'
 }
-agent { docker 'nginx:latest' }
-stage 'Building nginx Container for Docker Hub'
-docker.withRegistry('', 'DockerHub') {
-    
-    // Set up the container to build
-    maintainer_name = "Dexter-Yoon"
-    container_name = "hello-world-example"
-    
- 
-    //stage "Building Container"
-    //echo "Building nginx with docker.build(${maintainer_name}/${container_name}:${build_tag})"
-    //container = docker.build("${container_name}:'0.1'", 'nginx')
-        
-    // add more tests
-    
-    stage "Pushing"
-    //container.push()
-    container.pull()
-    
-    currentBuild.result = 'SUCCESS'
-}
 
 // 3번 Stage
 stage('Build') {
