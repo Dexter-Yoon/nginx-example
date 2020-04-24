@@ -1,9 +1,17 @@
-    stage('Checkout external proj') {
-        steps {
-            git branch: 'master',
-                credentialsId: 'GitHub',
-                url: 'https://github.com/Dexter-Yoon/nginx-example.git'
+{
+    node() { 
+        def registry = "kubelb01:5000"
+        def registryCredential = "kubelb01-registry"
 
-            sh 'ls'
+        stage('Clone repository') {
+            container('git') {
+                checkout([$class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    userRemoteConfigs: [
+                        [url: 'http://https://github.com/Dexter-Yoon/nginx-example.git', credentialsId: 'GitHub']
+                    ],
+                ])
+            }
         }
     }
+}
