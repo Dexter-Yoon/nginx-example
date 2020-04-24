@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-webapp-1
+  labels:
+    app: test-webapp
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: test-webapp
+    tier: test
+  type: NodePort
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test-webapp-1
+  labels:
+    app: test-webapp
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1       # One by one
+      maxUnavailable: 0 # Wait for a new pod before killing one pod
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: test-webapp
+        tier: test
+    spec:
+      containers:
+      - image: drlee001/test-webapp-1:latest
+        name: test-webapp-1
+        ports:
+        - containerPort: 80
+          name: test-webapp-1
