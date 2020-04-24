@@ -14,7 +14,7 @@ spec:
   type: NodePort
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-webapp-1
@@ -22,6 +22,9 @@ metadata:
     app: test-webapp
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: test-webapp
   strategy:
     rollingUpdate:
       maxSurge: 1       # One by one
