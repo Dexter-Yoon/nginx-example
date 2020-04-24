@@ -34,7 +34,7 @@ spec:
         tier: test
     spec:
       containers:
-      - image: drlee001/test-webapp-1:latest
+      - image: kubelb01:5000/nginx-example:latest
         name: test-webapp-1
         ports:
         - containerPort: 80
