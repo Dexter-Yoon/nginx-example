@@ -1,26 +1,28 @@
 environment {
 	GIT_BUSINESS_CD = 'master'
 	GITLAB_CREDENTIAL_ID = 'superuser'
-	IMAGE_REGISTRY = 'kubelb01:5000'
-	SYSTEM_CODE = 'nginx-example'
-	TAG_CODE = 'wildfly/wildfly_custom_image'
+	IMAGE_REGISTRY = '192.168.56.100:5000'
+	SYSTEM_CODE = 'middleware'
+	SVC_CODE = 'wildfly/wildfly_custom_image'
 	IMAGE_REPO = "${IMAGE_REGISTRY}/${SYSTEM_CODE}/${SVC_CODE}"
 	DOCKER_USERNAME = 'admin'
-	DOCKER_PASSWORD = 'admin'
+	DOCKER_PASSWORD = 'admin123'
 	VERBOSE_FLAG = '-q'
 }
 node {
 // 1번 Stage
 stage('1. Clone sources with Git Plugin') {
-    steps {
-       sh 'cd /tmp'
-       sh 'ls'
-    }
-    git(
-       url: 'https://github.com/Dexter-Yoon/nginx-example.git',
-       credentialsId: 'GitHub',
-       branch: "master"
-    )
+	def gitValues = git credentialsId: 'GitHub', url:'https://github.com/Dexter-Yoon/hello-world-example.git'
+	echo 'GIT_COMMIT : ${gitValues.GIT_COMMIT}'
+	echo 'GIT_PREVIOUS_COMMIT : ${gitValues.GIT_PREVIOUS_COMMIT}'
+	echo 'GIT_PREVIOUS_SUCCESSFUL_COMMIT : ${gitValues.GIT_PREVIOUS_SUCCESSFUL_COMMIT}'
+	echo 'GIT_BRANCH : ${gitValues.GIT_BRANCH}'
+	echo 'GIT_LOCAL_BRANCH : ${gitValues.GIT_LOCAL_BRANCH}'
+	echo 'GIT_COGIT_URLMMIT : ${gitValues.GIT_URL}'
+	echo 'GIT_COMMITTER_NAME : ${gitValues.GIT_COMMITTER_NAME}'
+	echo 'GIT_AUTHOR_NAME : ${gitValues.GIT_AUTHOR_NAME}'
+	echo 'GIT_COMMITTER_EMAIL : ${gitValues.GIT_COMMITTER_EMAIL}'
+	echo 'GIT_AUTHOR_EMAIL : ${gitValues.GIT_AUTHOR_EMAIL}'
 }
 // 2번 Stage
 stage('2. Clone sources with SCM Step Plugin') {
