@@ -1,5 +1,7 @@
 #!/bin/sh
-DOCKERHUB_ACCOUNT="drlee001"
+DOCKERHUB_ACCOUNT="admin"
+DOCKERURL="kubelb01:5000"
+DOCKER_IMAGE="nginx-example"
 docker login -u ${DOCKERHUB_ACCOUNT}
-docker build -t ${DOCKERHUB_ACCOUNT}/test-webapp-1:latest -f applications/test-webapp-1/Dockerfile applications/test-webapp-1/
-docker push ${DOCKERHUB_ACCOUNT}/test-webapp-1:latest
+docker build -t ${DOCKERURL}/${DOCKER_IMAGE}:latest -f applications/test-webapp-1/Dockerfile applications/test-webapp-1/
+docker push ${DOCKERURL}/${DOCKER_IMAGE}:latest
