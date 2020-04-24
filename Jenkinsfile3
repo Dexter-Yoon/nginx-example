@@ -11,6 +11,8 @@ pipeline {
                 stage('cd') {
                     steps {
                         sh 'cd /tmp'
+                        sh 'ls -la'
+                        sh 'whoami'
                     }
                 }
                 stage('display') {
