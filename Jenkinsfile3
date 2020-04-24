@@ -12,7 +12,7 @@ environment {
 node {
 // 1번 Stage
 stage('1. Clone sources with Git Plugin') {
-	def gitValues = git credentialsId: 'GitHub', url:'https://github.com/Dexter-Yoon/hello-world-example.git'
+	def gitValues = git credentialsId: 'GitHub', url:'https://github.com/Dexter-Yoon/nginx-example.git'
 	echo 'GIT_COMMIT : ${gitValues.GIT_COMMIT}'
 	echo 'GIT_PREVIOUS_COMMIT : ${gitValues.GIT_PREVIOUS_COMMIT}'
 	echo 'GIT_PREVIOUS_SUCCESSFUL_COMMIT : ${gitValues.GIT_PREVIOUS_SUCCESSFUL_COMMIT}'
