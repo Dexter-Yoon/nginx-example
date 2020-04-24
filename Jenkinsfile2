@@ -1,0 +1,18 @@
+{
+    node() { 
+        def registry = "kubelb01:5000"
+        def registryCredential = "kubelb01-registry"
+
+        stage('Clone repository') {
+            container('git') {
+                // https://gitlab.com/gitlab-org/gitlab-foss/issues/38910
+                checkout([$class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    userRemoteConfigs: [
+                        [url: 'http://https://github.com/Dexter-Yoon/nginx-example.git', credentialsId: 'GitHub']
+                    ],
+                ])
+            }
+        }
+    }
+}
