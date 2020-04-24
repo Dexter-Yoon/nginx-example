@@ -4,6 +4,6 @@
                 credentialsId: 'GitHub',
                 url: 'https://github.com/Dexter-Yoon/nginx-example.git'
 
-            sh "ls"
+            sh 'ls'
         }
     }
