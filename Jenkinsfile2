@@ -1,4 +1,3 @@
-{
     node() { 
         def registry = "kubelb01:5000"
         def registryCredential = "kubelb01-registry"
@@ -14,4 +13,3 @@
             }
         }
     }
-}
