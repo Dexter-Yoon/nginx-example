@@ -32,7 +32,7 @@ pipeline {
                 //withDockerRegistry(registry: [credentialsId: 'kubelb01-registry']) {
                 //    sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 //}
-                sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
+                sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest &' 
             }
         }
     }
