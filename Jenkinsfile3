@@ -6,21 +6,31 @@ pipeline {
     }
     agent any
     stages {
-        stage('Environment') {
-            parallel {
-                stage('cd') {
-                    steps {
-                        sh 'cd /tmp'
-                        sh 'ls -la'
-                        sh 'whoami'
-                    }
-                }
-                stage('display') {
-                    steps {
-                        sh 'ls -la'
-                    }
-                }
+        stage('Clone From GitHub') {
+            steps {
+                sh 'git clone git clone https://github.com/Dexter-Yoon/nginx-example.git'
             }
+        }
+        
+         stage('Change Directory') {
+            steps {
+                sh 'cd nginx-example'
+            }
+        }
+            //parallel {
+            //    stage('cd') {
+            //        steps {
+            //            sh 'cd /tmp'
+            //            sh 'ls -la'
+            //            sh 'whoami'
+            //        }
+            //    }
+            //    stage('display') {
+            //        steps {
+            //            sh 'ls -la'
+            //        }
+            //    }
+            //}
         }
         //stage('Build Jar') {
         //    steps {
