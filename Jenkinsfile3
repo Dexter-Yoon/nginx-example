@@ -6,9 +6,10 @@ pipeline {
         DOCKERURL="kubelb01:5000"
     }
     agent any
-    stages {
         stage('Clone From GitHub') {
-            checkout scm
+            steps {
+                sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
+            }
         }
         stage('Change Directory') {
             steps {
