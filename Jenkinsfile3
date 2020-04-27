@@ -17,11 +17,6 @@ pipeline {
                 sh 'cd nginx-example'
             }
         }
-        stage('File List') {
-            steps {
-                sh 'ls -al'
-            }
-        }
         stage('Build and Push') {
             steps {
                 sh 'sh ./build-and-push.sh'
@@ -29,7 +24,7 @@ pipeline {
         }
         stage('Deploy docker image') {
             steps {
-                withDockerRegistry(registry: [credentialsId: '$registryCredential']) {
+                withDockerRegistry(registry: [credentialsId: $registryCredential]) {
                     sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 }
             }
