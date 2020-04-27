@@ -3,6 +3,7 @@ pipeline {
         registry = "kubelb01:5000"
         registryCredential = 'kubelb01-registry'
         DOCKER_IMAGE="nginx-example"
+        DOCKERURL="kubelb01:5000"
     }
     agent any
     stages {
@@ -28,7 +29,7 @@ pipeline {
         }
         stage('Deploy docker image') {
             steps {
-                withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
+                withDockerRegistry([ credentialsId: registryCredential, url: "$DOCKERURL" ]) {
                     sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 }
             }
