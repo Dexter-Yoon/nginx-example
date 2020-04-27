@@ -33,5 +33,11 @@ pipeline {
                 sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest &' 
             }
         }
+        stage('Clean Up') {
+            steps {
+                sh 'cd ..'
+                sh 'rm -rf nginx-example'
+            }
+        }
     }
 }
