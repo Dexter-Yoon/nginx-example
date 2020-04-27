@@ -41,7 +41,7 @@ pipeline {
         //}
         stage('Clean docker image') {
             steps{
-                sh "docker ps"
+                sh "sudo docker ps"
             }
         }
      }
