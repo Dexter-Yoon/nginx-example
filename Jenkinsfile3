@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build and Push') {
             steps {
-                sh './build-and-push.sh'
+                sh 'sh ./build-and-push.sh'
             }
         }
         stage('Deploy docker image') {
