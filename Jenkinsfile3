@@ -22,11 +22,17 @@ pipeline {
                 sh 'sh ./build-and-push.sh'
             }
         }
+        //stage('Deploy docker image') {
+        //    steps {
+        //            sh 'sudo docker login -u admin https://${DOCKERURL}/v1/'
+        //    }
+        //}
         stage('Deploy docker image') {
             steps {
-                withDockerRegistry(registry: [credentialsId: 'kubelb01-registry']) {
-                    sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
-                }
+                //withDockerRegistry(registry: [credentialsId: 'kubelb01-registry']) {
+                //    sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
+                //}
+                sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
             }
         }
     }
