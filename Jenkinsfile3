@@ -11,14 +11,9 @@ pipeline {
                 sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
             }
         }
-        stage('Change Directory') {
-            steps {
-                sh 'cd nginx-example'
-            }
-        }
         stage('Build and Push') {
             steps {
-                sh 'sh ./build-and-push.sh'
+                sh 'sh nginx-example/build-and-push.sh'
             }
         }
         //stage('Deploy docker image') {
@@ -36,7 +31,7 @@ pipeline {
         }
         stage('Clean Up') {
             steps {
-                sh 'cd .. && rm -rf nginx-example'
+                sh 'rm -rf nginx-example'
             }
         }
     }
