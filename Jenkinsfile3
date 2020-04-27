@@ -8,9 +8,7 @@ pipeline {
     agent any
     stages {
         stage('Clone From GitHub') {
-            steps {
-                sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
-            }
+            checkout scm
         }
         stage('Change Directory') {
             steps {
