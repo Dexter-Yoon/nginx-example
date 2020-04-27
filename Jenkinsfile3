@@ -26,10 +26,17 @@ pipeline {
                 sh 'sudo docker build -t ${DOCKERURL}/${DOCKER_IMAGE}:latest -f applications/test-webapp-1/Dockerfile applications/test-webapp-1/'
             }
         }
-        stage('Deploy docker image') {
+        stage('Push docker image') {
             steps {
                 withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
                     sh 'sudo docker push ${DOCKERURL}/${DOCKER_IMAGE}:latest'
+                }
+            }
+        }
+        stage('Deploy docker image') {
+            steps {
+                withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
+                    sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 }
             }
         }
