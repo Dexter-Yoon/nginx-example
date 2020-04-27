@@ -34,4 +34,5 @@ pipeline {
                 sh 'rm -rf nginx-example'
             }
         }
+    }
 }
