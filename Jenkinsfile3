@@ -6,6 +6,7 @@ pipeline {
         DOCKERURL="kubelb01:5000"
     }
     agent any
+    stages {
         stage('Clone From GitHub') {
             steps {
                 sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
@@ -34,4 +35,5 @@ pipeline {
                 sh 'rm -rf nginx-example'
             }
         }
+    }
 }
