@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone From GitHub') {
             steps {
-                sh 'git clone git clone https://github.com/Dexter-Yoon/nginx-example.git'
+                sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
             }
         }
         stage('Change Directory') {
