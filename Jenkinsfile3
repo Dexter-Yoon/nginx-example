@@ -5,52 +5,16 @@ pipeline {
         DOCKER_IMAGE="nginx-example"
     }
     agent any
-    stage('Clone From GitHub') {
-        steps {
-            sh 'git clone git clone https://github.com/Dexter-Yoon/nginx-example.git'
+    stages {
+        stage('Clone From GitHub') {
+            steps {
+                sh 'git clone git clone https://github.com/Dexter-Yoon/nginx-example.git'
+            }
         }
-    }
-        
-    stage('Change Directory') {
-        steps {
-            sh 'cd nginx-example'
-        }
-    }
-            //parallel {
-            //    stage('cd') {
-            //        steps {
-            //            sh 'cd /tmp'
-            //            sh 'ls -la'
-            //            sh 'whoami'
-            //        }
-            //    }
-            //    stage('display') {
-            //        steps {
-            //            sh 'ls -la'
-            //        }
-            //    }
-            //}
-    
-        //stage('Build Jar') {
-        //    steps {
-        //       sh './gradlew build'
-        //    }
-        //}
-        //stage('Build docker image') {
-        //    steps {
-        //        sh 'docker build -t ${DOCKERURL}/${DOCKER_IMAGE}:latest -f applications/test-webapp-1/Dockerfile applications/test-webapp-1/'
-        //    }
-        //}
-        //stage('Deploy docker image') {
-        //    steps {
-        //        withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
-        //            sh 'docker push ${DOCKERURL}/${DOCKER_IMAGE}:latest'
-        //        }
-        //    }
-        //}
-    stage('Clean docker image') {
-        steps{
-            sh "sudo docker ps"
+        stage('Change Directory') {
+            steps {
+                sh 'cd nginx-example'
+            }
         }
     }
 }
