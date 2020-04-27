@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Clean Up') {
             steps {
-                sh 'sudo rm -rf nginx-example*'
+                sh 'rm -rf ./nginx-example*'
             }
         }
     }
