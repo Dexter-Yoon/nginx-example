@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Clean Up') {
             steps {
-                sh 'cd ..'
+                sh 'cd ..',
                 sh 'rm -rf nginx-example'
             }
         }
