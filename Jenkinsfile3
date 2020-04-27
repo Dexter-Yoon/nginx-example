@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deploy docker image') {
             steps {
-                withDockerRegistry(registry: [credentialsId: $registryCredential]) {
+                withDockerRegistry(registry: [credentialsId: 'kubelb01-registry']) {
                     sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 }
             }
