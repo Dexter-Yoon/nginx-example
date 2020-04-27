@@ -9,13 +9,16 @@ pipeline {
         stage('Clone From GitHub') {
             steps {
                 sh 'git clone https://github.com/Dexter-Yoon/nginx-example.git'
-                sh 'cd nginx-example'
-                sh 'ls -al'
             }
         }
         stage('Change Directory') {
             steps {
                 sh 'cd nginx-example'
+            }
+        }
+        stage('File List') {
+            steps {
+                sh 'ls -al'
             }
         }
     }
