@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy docker image') {
             steps {
-                withDockerRegistry([ credentialsId: registryCredential, url: "$DOCKERURL" ]) {
+                withDockerRegistry([ credentialsId: registryCredential, url: "https://kubelb01:5000/v1/" ]) {
                     sh 'sudo docker run -p 8081:80 ${DOCKERURL}/${DOCKER_IMAGE}:latest'
                 }
             }
